@@ -1,0 +1,18 @@
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+handlers:
+# Serve html files.
+- url: /.*
+  script: index.html
+- url: /.*
+  script: mysql.php
+
+env_variables:
+  # Replace project, instance, database, user and password with the values obtained
+  # when configuring your Cloud SQL instance.
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/ohana-155923:us-central1:mydb;dbname=store
+  MYSQL_USER: root
+  MYSQL_PASSWORD: root
+
